@@ -5,4 +5,5 @@ public enum RoomStatus {
     FULL,
     MAINTENANCE,
     RESERVED
+
 }

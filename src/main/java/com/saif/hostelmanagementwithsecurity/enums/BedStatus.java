@@ -5,3 +5,5 @@ public enum BedStatus {
     OCCUPIED,
     MAINTENANCE
 }
+
+
