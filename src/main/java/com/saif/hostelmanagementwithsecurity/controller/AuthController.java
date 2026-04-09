@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -40,5 +41,9 @@ public class AuthController {
             @AuthenticationPrincipal UserDetails userDetails) {
         authService.changePassword(userDetails.getUsername(), request);
         return ResponseEntity.ok(ApiResponse.success("Password changed successfully", null));
+    }
+    @GetMapping("/encode/{password}")
+    public String encode(@PathVariable String password) {
+        return new BCryptPasswordEncoder().encode(password);
     }
 }
